@@ -2,78 +2,111 @@
 <html lang="fa">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Battle Fa 🇮🇷</title>
 
 <style>
-    body {
-        margin: 0;
-        padding: 0;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-        font-family: Tahoma, sans-serif;
-        color: white;
-    }
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 
-    .login-box {
-        background: rgba(0, 0, 0, 0.5);
-        padding: 30px;
-        border-radius: 15px;
-        width: 300px;
-        text-align: center;
-        box-shadow: 0 0 20px rgba(0,0,0,0.6);
-    }
+.card {
+    background: rgba(0,0,0,0.4);
+    padding: 25px;
+    border-radius: 16px;
+    width: 280px;
+    text-align: center;
+}
 
-    h1 {
-        margin-bottom: 10px;
-        font-size: 24px;
-    }
+input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    margin-top: 10px;
+    font-size: 14px;
+}
 
-    p {
-        font-size: 14px;
-        margin-bottom: 20px;
-        color: #ddd;
-    }
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border-radius: 10px;
+    border: none;
+    background: #3ddc97;
+    font-size: 15px;
+    cursor: pointer;
+}
 
-    input {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 15px;
-        border-radius: 8px;
-        border: none;
-        outline: none;
-        font-size: 14px;
-    }
+button:hover {
+    opacity: 0.9;
+}
 
-    button {
-        width: 100%;
-        padding: 12px;
-        border: none;
-        border-radius: 10px;
-        background: #1abc9c;
-        color: black;
-        font-size: 16px;
-        cursor: pointer;
-        font-weight: bold;
-    }
+#game {
+    display: none;
+    text-align: center;
+}
 
-    button:hover {
-        background: #16a085;
-    }
+.hit-btn {
+    margin-top: 20px;
+    background: #ff5252;
+    color: white;
+}
 </style>
 </head>
 
 <body>
 
-<div class="login-box">
-    <h1>Battle Fa 🇮🇷</h1>
+<!-- صفحه ورود -->
+<div class="card" id="login">
+    <h2>Battle Fa 🇮🇷</h2>
     <p>به میدان نبرد خوش آمدی</p>
-
-    <input type="text" placeholder="نام بازیکن">
-    <button>ورود به بازی</button>
+    <input type="text" id="username" placeholder="نام بازیکن">
+    <button onclick="startGame()">ورود به بازی</button>
 </div>
+
+<!-- صفحه بازی -->
+<div class="card" id="game">
+    <h2 id="playerName"></h2>
+    <p>ضربه‌های باقی‌مانده:</p>
+    <h1 id="hits">30</h1>
+    <button class="hit-btn" onclick="hit()">🥷 ضربه نینجا</button>
+    <p id="msg"></p>
+</div>
+
+<script>
+let hits = 30;
+
+function startGame() {
+    const name = document.getElementById("username").value.trim();
+    if (name === "") {
+        alert("نام را وارد کن");
+        return;
+    }
+
+    document.getElementById("playerName").innerText = "نیاجا " + name;
+    document.getElementById("login").style.display = "none";
+    document.getElementById("game").style.display = "block";
+}
+
+function hit() {
+    if (hits <= 0) {
+        document.getElementById("msg").innerText = "❌ ضربه‌های امروز تموم شد";
+        return;
+    }
+
+    hits--;
+    document.getElementById("hits").innerText = hits;
+    document.getElementById("msg").innerText = "✅ ضربه زده شد";
+}
+</script>
 
 </body>
 </html>
