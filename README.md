@@ -91,7 +91,7 @@ function startGame() {
         return;
     }
 
-    document.getElementById("playerName").innerText = "نیاجا " + name;
+    document.getElementById("playerName").innerText = "حمله بر " + name;
     document.getElementById("login").style.display = "none";
     document.getElementById("game").style.display = "block";
 }
