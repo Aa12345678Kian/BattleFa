@@ -77,7 +77,7 @@ button:hover {
     <h2 id="playerName"></h2>
     <p>ضربه‌های باقی‌مانده:</p>
     <h1 id="hits">30</h1>
-    <button class="hit-btn" onclick="hit()">🥷 ضربه نینجا</button>
+    <button class="hit-btn" onclick="hit()">ضربه ی حمله</button>
     <p id="msg"></p>
 </div>
 
